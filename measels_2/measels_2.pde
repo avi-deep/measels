@@ -27,9 +27,9 @@ void setup()
   widthDiameterFace = smallerDimension;
   heightDiameterFace = smallerDimension;
   xLeftEye = xCenter-smallerDimension*1/4;
-  yLeftEye = yCenter-smallerDimension*1/4;
+  yLeftEye = yCenter-smallerDimension*1/6;
   xRightEye = xCenter+smallerDimension*1/4;
-  yRightEye = yCenter-smallerDimension*1/4;
+  yRightEye = yCenter-smallerDimension*1/6;
   eyeDiameter = smallerDimension*1/8;
   xNoseBridge = xCenter;
   yNoseBridge = yCenter-smallerDimension*1/8;
@@ -55,9 +55,10 @@ void setup()
 void draw()
 {
   ellipse(xLeftEye, yLeftEye, eyeDiameter, eyeDiameter);
+  //rect(0,0,800,100);
   ellipse(xRightEye, yRightEye, eyeDiameter, eyeDiameter);
   triangle(xNoseBridge, yNoseBridge, xLeftNostril, yLeftNostril, xRightNostril, yRightNostril);
-  strokeCap(SQUARE); //ROUND (default), PROJECT
+  //strokeCap(SQUARE); //ROUND (default), PROJECT
   strokeWeight(thack);
   line(xLeftMouth, yLeftMouth, xRightMouth, yRightMouth);
   strokeWeight(1); //resets default
