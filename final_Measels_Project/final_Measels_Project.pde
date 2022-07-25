@@ -88,7 +88,7 @@ void draw() {
   ellipse(pupilRX, pupilY, pupilDiameter, pupilDiameterY);
   triangle(x1, y1, x2, y2, x3, y3);
   fill(#112908);
-  arc(mouthX, mouthY, mouthWidth, mouthHeight, PI, TWO_PI);
+  arc(mouthX, mouthY, mouthWidth, mouthHeight, TWO_PI, PI);
   fill(defaultColor);
   
   if ( rectON==true ) {
@@ -117,12 +117,12 @@ rect(divX, divY, divWidth,divHeight);
   rect(btnX, btnY, btnWidth, btnHeight);
   fill(btnFill1);
   rect(btnX1, btnY, btnWidth1, btnHeight1);
-  textAlign (CENTER, CENTER); //Align X&Y, see Processing.org / Reference
-  //Values: [LEFT | CENTER | RIGHT] & [TOP | CENTER | BOTTOM | BASELINE]
-  textFont(buttonFont, 25); //Change the number until it fits, largest font size
-  //
-  //Specific Text per button
-  text(buttonText1, buttonX1, buttonY1, buttonWidth1, buttonHeight1);
+  //textAlign (CENTER, CENTER); //Align X&Y, see Processing.org / Reference
+  ////Values: [LEFT | CENTER | RIGHT] & [TOP | CENTER | BOTTOM | BASELINE]
+  //textFont(buttonFont, 25); //Change the number until it fits, largest font size
+  ////
+  ////Specific Text per button
+  //text(buttonText1, buttonX1, buttonY1, buttonWidth1, buttonHeight1);
   
 
 
@@ -131,7 +131,11 @@ rect(divX, divY, divWidth,divHeight);
 void keyPressed() {} //End keyPressed()
 //
 void mousePressed() {
-if ( mouseX > btnX1 && mouseX < btnX1+btnWidth1 && mouseY > btnY && mouseY < btnY+btnHeight1) rectON=true;
-} //End mousePressed()
+ rectON =false;
+if ( mouseX > btnX1 && mouseX < btnX1+btnWidth1 && mouseY > btnY && mouseY < btnY+btnHeight1)   rectON=true;
+
+}
+
+//End mousePressed()
 //
 //END MAIN
