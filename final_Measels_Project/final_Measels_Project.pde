@@ -4,6 +4,10 @@ float pupilRX, pupilLX,pupilY, pupilDiameter, pupilDiameterY, mouthX, mouthY, mo
 float x1, y1, x2, y2, x3, y3 ;
 float measleX, measleY, measleDiameter, faceRadius, divX, divY, divWidth,divHeight;
 float btnX, btnX1, btnY, btnHeight, btnWidth, btnWidth1, btnHeight1; 
+float  textX, textY, textWidth, textHeight, text1, textX1 ;
+String text = "Click Me";
+//String buttonText2= "Or Me";
+PFont buttonFont;
 color btnFill, resetDefaultColour, btnFill1;
 color defaultColor = #FFFFFF, faceColor;
 Boolean rectON=false, ellipseON=false;
@@ -25,6 +29,9 @@ void setup() {
   
   faceWidth = smallerDimension;
   faceHeight = smallerDimension;
+  
+  faceColor = #3AA713;
+  
   eyeLX = width/3;  
   eyeRX = width - width/3;
   eyeY = height/3;
@@ -67,7 +74,10 @@ void setup() {
   btnWidth1 = width/4;
   btnHeight1 = height/10;
   
-  faceColor = #3AA713;
+  textX = 200;
+  textY = 200;
+  textWidth = 200;
+  textHeight = 200;
  
 
   
@@ -76,6 +86,7 @@ void setup() {
   ellipse(faceX, faceY, faceWidth, faceHeight);
   fill(defaultColor);
   
+  buttonFont = createFont ("Harrington", 55);
   
 } //End setup()
 //
@@ -88,7 +99,7 @@ void draw() {
   ellipse(pupilRX, pupilY, pupilDiameter, pupilDiameterY);
   triangle(x1, y1, x2, y2, x3, y3);
   fill(#112908);
-  arc(mouthX, mouthY, mouthWidth, mouthHeight, TWO_PI, PI);
+  arc(mouthX, mouthY, mouthWidth, mouthHeight, PI, TWO_PI);
   fill(defaultColor);
   
   if ( rectON==true ) {
@@ -116,13 +127,13 @@ rect(divX, divY, divWidth,divHeight);
   fill(btnFill); //Must Have HoverOver and NightMode for Good Marks
   rect(btnX, btnY, btnWidth, btnHeight);
   fill(btnFill1);
-  rect(btnX1, btnY, btnWidth1, btnHeight1);
-  //textAlign (CENTER, CENTER); //Align X&Y, see Processing.org / Reference
-  ////Values: [LEFT | CENTER | RIGHT] & [TOP | CENTER | BOTTOM | BASELINE]
-  //textFont(buttonFont, 25); //Change the number until it fits, largest font size
-  ////
-  ////Specific Text per button
-  //text(buttonText1, buttonX1, buttonY1, buttonWidth1, buttonHeight1);
+    rect(btnX1, btnY, btnWidth1, btnHeight1);
+  
+  //BTN TEXT
+  fill(#000000);
+  textFont(buttonFont, 25);
+  text(text, textX, textY, textWidth, textHeight);
+  //text(text1, textX1, textY, textWidth, textHeight);
   
 
 
@@ -131,10 +142,21 @@ rect(divX, divY, divWidth,divHeight);
 void keyPressed() {} //End keyPressed()
 //
 void mousePressed() {
- rectON =false;
-if ( mouseX > btnX1 && mouseX < btnX1+btnWidth1 && mouseY > btnY && mouseY < btnY+btnHeight1)   rectON=true;
+ //rectON =false;
+if ( mouseX > btnX1 && mouseX < btnX1+btnWidth1 && mouseY > btnY && mouseY < btnY+btnHeight1)   {
+ if ( rectON==false ) {
+      rectON=true;
+    } else {
+      rectON=false;
+    }
+}
+
+
+if ( mouseX > btnX && mouseX < btnX+btnWidth && mouseY > btnY && mouseY < btnY+btnHeight)   exit();
+
 
 }
+
 
 //End mousePressed()
 //
