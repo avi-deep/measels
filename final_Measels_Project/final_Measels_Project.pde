@@ -4,9 +4,9 @@ float pupilRX, pupilLX,pupilY, pupilDiameter, pupilDiameterY, mouthX, mouthY, mo
 float x1, y1, x2, y2, x3, y3 ;
 float measleX, measleY, measleDiameter, faceRadius, divX, divY, divWidth,divHeight;
 float btnX, btnX1, btnY, btnHeight, btnWidth, btnWidth1, btnHeight1; 
-float  textX, textY, textWidth, textHeight, text1, textX1 ;
-String text = "Click Me";
-//String buttonText2= "Or Me";
+float  textX, textY, textWidth, textHeight, textX1, imgX, imgY, imgWidth, imgHeight ;
+PImage hair ;
+String text = "Play/Pause", text1="Exit";
 PFont buttonFont;
 color btnFill, resetDefaultColour, btnFill1;
 color defaultColor = #FFFFFF, faceColor;
@@ -15,6 +15,8 @@ Boolean rectON=false, ellipseON=false;
 //
 void setup() {
   size(700, 600);
+  
+ 
   
   //Population
   centerX = width/2;
@@ -26,6 +28,12 @@ void setup() {
   } else { 
     smallerDimension = width;
   }
+  
+  imgX = 0;
+  imgY = height*0 - height*1/6;
+  imgWidth = width;
+  imgHeight = height*4/5;
+  
   
   faceWidth = smallerDimension;
   faceHeight = smallerDimension;
@@ -74,10 +82,11 @@ void setup() {
   btnWidth1 = width/4;
   btnHeight1 = height/10;
   
-  textX = 200;
-  textY = 200;
-  textWidth = 200;
-  textHeight = 200;
+  textX = width/6;
+  textX1 = width*5/9;
+  textY = height - height/9;
+  textWidth = width/4;
+  textHeight = height/10;
  
 
   
@@ -86,11 +95,15 @@ void setup() {
   ellipse(faceX, faceY, faceWidth, faceHeight);
   fill(defaultColor);
   
-  buttonFont = createFont ("Harrington", 55);
-  
+  buttonFont = createFont ("Tactico", 55);
+   hair = loadImage("imgs/hair.png");
+   
 } //End setup()
 //
 void draw() {
+  
+ 
+  
   fill(#134801);
   ellipse(eyeLX, eyeY, eyeDiameter, eyeDiameterY);
   ellipse(eyeRX, eyeY, eyeDiameter, eyeDiameterY);
@@ -113,6 +126,7 @@ void draw() {
   } //Button 1
   fill(defaultColor);
 rect(divX, divY, divWidth,divHeight);
+image(hair, imgX, imgY, imgWidth, imgHeight);
   
     if ( mouseX > btnX && mouseX < btnX+btnWidth && mouseY > btnY && mouseY < btnY+btnHeight) {
   btnFill = #AA1515 ;
@@ -120,20 +134,22 @@ rect(divX, divY, divWidth,divHeight);
   btnFill = #171FAF;
   }
      if ( mouseX > btnX1 && mouseX < btnX1+btnWidth1 && mouseY > btnY && mouseY < btnY+btnHeight1) {
-  btnFill1 = #319815 ;
+  btnFill1 = #EAD911 ;
   } else {
   btnFill1 = #981587;
   }
   fill(btnFill); //Must Have HoverOver and NightMode for Good Marks
   rect(btnX, btnY, btnWidth, btnHeight);
   fill(btnFill1);
-    rect(btnX1, btnY, btnWidth1, btnHeight1);
+  rect(btnX1, btnY, btnWidth1, btnHeight1);
   
+    
   //BTN TEXT
-  fill(#000000);
+  textAlign(CENTER);
+  fill(#FFFFFF);
   textFont(buttonFont, 25);
   text(text, textX, textY, textWidth, textHeight);
-  //text(text1, textX1, textY, textWidth, textHeight);
+  text(text1, textX1, textY, textWidth, textHeight);
   
 
 
